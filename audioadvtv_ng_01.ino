@@ -6,21 +6,17 @@
 // mods on the internet and send me a mail with the link
 
 // V 0.2: code is basically working
+// V 0.3: code works like expected
   
 
 /* Todo:
-  - add LED support
-  - stop playing after played a track (no loop)
   - add more comments for make readers
-  
   */ 
 
 #include <JQ6500_Serial.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include "RTClib.h"
-
-#define LED 9
 
 JQ6500_Serial mp3(2,3); //create an mp3 object
 RTC_DS1307 rtc;         //create an rtc object
@@ -44,18 +40,11 @@ void setup() {
   Wire.begin();
   rtc.begin();
   rtc.adjust(DateTime(__DATE__, __TIME__));
-   
-
-// setup LED
-  pinMode(LED, OUTPUT);
-
 }
 
 void loop() {
   
   DateTime now = rtc.now();
-
-  
   
   if(mp3.getStatus() != MP3_STATUS_PLAYING) {
     if (now.day() < 25){
@@ -64,14 +53,16 @@ void loop() {
         Serial.print("playing track Number: ");
         Serial.println(now.day());
 
-        mp3.playFileNumberInFolderNumber(0, now.day());
-      
+        mp3.playFileNumberInFolderNumber(0, now.day());      
+      }
+      else{
+        Serial.println("not an advent day");
+        delay(100);
+        exit(0);
       }
     }
-    else{
-      Serial.println("not an advent day");
-    }
   }
+exit(0);  
 }
 
 
