@@ -10,6 +10,6 @@ There are some minor mistakes in the instructions. I'll collect them here, so yo
 
 
 * Folder Structure:
-  as mentioned by [Landixus](https://github.com/Landixus) ([Issue #3](https://github.com/mischk/audioadventcalendar_ng/issues/3) the folder structure on the sd-card must be like: /00/0xx.mp3.
+  as mentioned by [Landixus](https://github.com/Landixus) ([Issue #3](https://github.com/mischk/audioadventcalendar_ng/issues/3)) the folder structure on the sd-card must be like: /00/0xx.mp3.
   Folder Name is 00 NOT 000.
   
